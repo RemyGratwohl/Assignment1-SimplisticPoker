@@ -1,3 +1,4 @@
+package Entities;
 import Enums.Suits; 
 import Enums.Ranks;
 
@@ -6,7 +7,7 @@ public class Card {
 	private Suits suit;
 	private Ranks rank;
 
-    Card(Suits suit, Ranks rank){
+    public Card(Suits suit, Ranks rank){
     	this.rank = rank;
     	this.suit = suit;
     }
