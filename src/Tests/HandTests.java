@@ -47,6 +47,7 @@ public class HandTests {
 		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.JACK));
 		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.TEN));
 		
+		System.out.println(hand1.getRank());
 		assertEquals(HandRanks.ROYALFLUSH,hand1.getRank());
 	}
 	
@@ -165,6 +166,6 @@ public class HandTests {
 		hand1.addCard(new Card(Suits.SPADES,Ranks.NINE));
 		
 		assertEquals(HandRanks.HIGHCARD,hand1.getRank());
-		assertEquals(Ranks.ACE,hand1.getHighCards().get(0).getRank());
+		assertEquals(Ranks.ACE,hand1.getHighestCard().getRank());
 	}
 }

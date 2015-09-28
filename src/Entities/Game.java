@@ -1,6 +1,7 @@
 package Entities;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import Entities.Hand;
 
@@ -60,8 +61,16 @@ public class Game {
 				 newHand.addCard(new Card(suit,rank));
 			 }
 		}
-		newHand.sortHand();
+		Hand.sortByRank(newHand.getCards());
 		return newHand;
+	}
+	
+	public void start(){
+		while(true){
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Beginning Round, please enter the number of players (2-4)");
+			
+		}
 	}
 	
 	private void checkIfPlayerIDExists(String s){
@@ -71,9 +80,10 @@ public class Game {
 		playerIDs.add(s);
 	}
 	
+	
 	private void checkIfCardExists(String s){
 		if (cardNameBank.contains(s)){
-			throw new IllegalArgumentException("A Card with that name already exists");
+			throw new IllegalArgumentException("A Card of that type already exists");
 		}
 		cardNameBank.add(s);
 	}

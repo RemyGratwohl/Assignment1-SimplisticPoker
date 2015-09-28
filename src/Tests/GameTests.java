@@ -27,14 +27,15 @@ public class GameTests {
 		assertEquals(5,newhand.getCards().size());
 		
 		assertEquals(Ranks.ACE,newhand.getCards().get(0).getRank());
-		assertEquals(Suits.HEARTS,newhand.getCards().get(0).getSuit());
 		assertEquals(Ranks.KING,newhand.getCards().get(1).getRank());
-		assertEquals(Suits.CLUBS,newhand.getCards().get(1).getSuit());
 		assertEquals(Ranks.TEN,newhand.getCards().get(2).getRank());
-		assertEquals(Suits.SPADES,newhand.getCards().get(2).getSuit());
 		assertEquals(Ranks.SEVEN,newhand.getCards().get(3).getRank());
-		assertEquals(Suits.DIAMONDS,newhand.getCards().get(3).getSuit());
 		assertEquals(Ranks.TWO,newhand.getCards().get(4).getRank());
+		
+		assertEquals(Suits.HEARTS,newhand.getCards().get(0).getSuit());
+		assertEquals(Suits.CLUBS,newhand.getCards().get(1).getSuit());
+		assertEquals(Suits.SPADES,newhand.getCards().get(2).getSuit());
+		assertEquals(Suits.DIAMONDS,newhand.getCards().get(3).getSuit());
 		assertEquals(Suits.SPADES,newhand.getCards().get(4).getSuit());
 	}
 	
@@ -70,4 +71,45 @@ public class GameTests {
 		exception.expectMessage("Invalid Tokens");
 		newgame.createHand(samplestring1);
 	}
+	
+	@Test
+	public void testDuplicateCardInput(){
+		String samplestring1 = "John TenSpades TenSpades TenSpades TenSpades TenSpades";
+		
+		Game newgame = new Game();
+		
+		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("A Card of that type already exists");
+		newgame.createHand(samplestring1);
+	}
+	
+	@Test
+	public void testDuplicateCardDifferentHand(){
+		String samplestring1 = "John TenSpades AceHearts SevenDiamonds KingClubs TwoSpades";
+		String samplestring2 = "Jeff ThreeSpades EightSpades QueenSpades AceSpades TenSpades";
+		
+		Game newgame = new Game();
+		
+		newgame.createHand(samplestring1);
+		
+		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("A Card of that type already exists");
+		newgame.createHand(samplestring2);
+	}
+	
+	@Test
+	public void testDuplicatePlayerID(){
+		String samplestring1 = "John TenSpades AceHearts SevenDiamonds KingClubs TwoSpades";
+		String samplestring2 = "John ThreeSpades EightSpades QueenSpades AceSpades TwoHearts";
+		
+		Game newgame = new Game();
+		
+		newgame.createHand(samplestring1);
+		
+		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("A Player with that name already exists");
+		newgame.createHand(samplestring2);
+	}
+	
+	
 }
