@@ -40,21 +40,22 @@ public class Game {
 			 Suits suit = null;
 			 
 			 for(Ranks r : Ranks.values()){
-				 if (token.startsWith(r.name().toLowerCase())){
+				 if (token.startsWith(r.toString().toLowerCase())){
 					 rank = r;
+					 token = token.replace(r.toString().toLowerCase(),"");
 					 break;
 				 }
 			 }
 			 
 			 for(Suits s : Suits.values()){
-				 if (token.endsWith(s.name().toLowerCase())){
+				 if (token.equals(s.toString().toLowerCase())){
 					 suit = s;
 					 break;
 				 }
 			 }
 			 
-			 if (rank == null && suit == null){
-				 throw new IllegalArgumentException("Invalid Token");
+			 if (rank == null || suit == null){
+				 throw new IllegalArgumentException("Invalid Tokens");
 			 }else{
 				 newHand.addCard(new Card(suit,rank));
 			 }
