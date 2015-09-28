@@ -36,7 +36,7 @@ public class HandTests {
 		exception.expectMessage("Hands can only have five cards.");
 		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.FOUR));
 	}
-	
+
 	@Test
 	public void testRoyalFlush() {
 		Hand hand1 = new Hand();
@@ -47,7 +47,6 @@ public class HandTests {
 		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.JACK));
 		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.TEN));
 		
-		System.out.println(hand1.getRank());
 		assertEquals(HandRanks.ROYALFLUSH,hand1.getRank());
 	}
 	
@@ -167,5 +166,26 @@ public class HandTests {
 		
 		assertEquals(HandRanks.HIGHCARD,hand1.getRank());
 		assertEquals(Ranks.ACE,hand1.getHighestCard().getRank());
+	}
+	
+	@Test
+	public void testCompareHands(){
+		Hand hand1 = new Hand();
+		
+		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.FIVE));
+		hand1.addCard(new Card(Suits.CLUBS,Ranks.FIVE));
+		hand1.addCard(new Card(Suits.SPADES,Ranks.ACE));
+		hand1.addCard(new Card(Suits.HEARTS,Ranks.EIGHT));
+		hand1.addCard(new Card(Suits.SPADES,Ranks.NINE));
+		
+		Hand hand2 = new Hand();
+		
+		hand1.addCard(new Card(Suits.SPADES,Ranks.FIVE));
+		hand1.addCard(new Card(Suits.HEARTS,Ranks.FIVE));
+		hand1.addCard(new Card(Suits.SPADES,Ranks.TWO));
+		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.EIGHT));
+		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.NINE));
+		
+		assertEquals(1,hand1.compareTo(hand2));
 	}
 }

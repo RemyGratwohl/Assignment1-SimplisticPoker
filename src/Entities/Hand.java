@@ -11,6 +11,9 @@ public class Hand {
 	private String playerID;
 	private List<Card> cards;
 	
+	private Ranks mainRank;
+	private List<Ranks> highcards;
+	
 	public void setPlayerID(String s){
 		playerID = s;
 	}
@@ -50,7 +53,6 @@ public class Hand {
 	}
 	
 	public HandRanks getRank(){
-		System.out.println(isStraight(cards) + " " + isFlush(cards) + " " + (getHighestCard().getRank() == Ranks.ACE));
 		if(isStraight(cards) && isFlush(cards) && (getHighestCard().getRank() == Ranks.ACE)){
 			return HandRanks.ROYALFLUSH;
 		}else if(isFlush(cards) && isStraight(cards)){
@@ -76,7 +78,6 @@ public class Hand {
 	
 	public Card getHighestCard(){
 		sortByRank(cards);
-		System.out.println(cards);
 		return cards.get(0);
 	}
 	
