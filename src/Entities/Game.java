@@ -1,5 +1,7 @@
 package Entities;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,7 +14,7 @@ public class Game {
 
 	private List<String> playerIDs = new ArrayList<String>();
 	private List<String> cardNameBank = new ArrayList<String>();
-	private List<Hand> hands = new ArrayList<Hand>();
+	private static List<Hand> hands = new ArrayList<Hand>();
 	
 	private int numPlayers;
 	
@@ -74,7 +76,7 @@ public class Game {
 		    numPlayers = 0;
 			String input = "";
 			
-			System.out.println("Beginning Round");
+			System.out.println("Beginning New Round");
 
 			while(numPlayers < 2 || numPlayers > 4){
 				System.out.println("Enter the number of Players (2-4):");
@@ -88,6 +90,23 @@ public class Game {
 				input = scanner.nextLine();
 				hands.add(createHand(input));
 			}
+			
+			sortHands();
+			printHands();
+		}
+	}
+	
+	public static void sortHands(){
+		Collections.sort(hands, new Comparator<Hand>() {
+            public int compare( Hand h1, Hand h2) {
+                return h2.compareTo(h1);
+            }
+		});
+	}
+	
+	private void printHands(){
+		for(Hand h : hands){
+			System.out.println((hands.indexOf(h) + 1) + " " + h.getPlayerID());
 		}
 	}
 	
