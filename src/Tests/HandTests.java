@@ -172,19 +172,19 @@ public class HandTests {
 	public void testCompareHands(){
 		Hand hand1 = new Hand();
 		
-		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.FIVE));
-		hand1.addCard(new Card(Suits.CLUBS,Ranks.FIVE));
-		hand1.addCard(new Card(Suits.SPADES,Ranks.ACE));
-		hand1.addCard(new Card(Suits.HEARTS,Ranks.EIGHT));
-		hand1.addCard(new Card(Suits.SPADES,Ranks.NINE));
+		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.NINE));
+		hand1.addCard(new Card(Suits.CLUBS,Ranks.FOUR));
+		hand1.addCard(new Card(Suits.SPADES,Ranks.THREE));
+		hand1.addCard(new Card(Suits.HEARTS,Ranks.TWO));
+		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.ACE));
 		
 		Hand hand2 = new Hand();
 		
-		hand1.addCard(new Card(Suits.SPADES,Ranks.FIVE));
-		hand1.addCard(new Card(Suits.HEARTS,Ranks.FIVE));
-		hand1.addCard(new Card(Suits.SPADES,Ranks.TWO));
-		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.EIGHT));
-		hand1.addCard(new Card(Suits.DIAMONDS,Ranks.NINE));
+		hand2.addCard(new Card(Suits.SPADES,Ranks.TWO));
+		hand2.addCard(new Card(Suits.HEARTS,Ranks.FIVE));
+		hand2.addCard(new Card(Suits.SPADES,Ranks.SEVEN));
+		hand2.addCard(new Card(Suits.DIAMONDS,Ranks.TEN));
+		hand2.addCard(new Card(Suits.DIAMONDS,Ranks.QUEEN));
 		
 		assertEquals(1,hand1.compareTo(hand2));
 	}

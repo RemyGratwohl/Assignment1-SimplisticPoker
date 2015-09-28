@@ -12,7 +12,7 @@ public class Hand {
 	private List<Card> cards;
 	
 	private Ranks mainRank;
-	private List<Ranks> highcards;
+	private List<Ranks> highCards;
 	
 	public void setPlayerID(String s){
 		playerID = s;
@@ -114,6 +114,7 @@ public class Hand {
 				  l.get(3).getRank() == l.get(4).getRank();
 		
 		return (firststate || secondstate);
+		
 	}
 	
 	private boolean hasFourOfAKind(List<Card> l){
@@ -129,7 +130,6 @@ public class Hand {
 		
 		return (case1 || case2);
 	}
-	
 	
 	private boolean hasThreeOfAKind(List<Card> l){
 		sortByRank(l);
@@ -170,5 +170,23 @@ public class Hand {
 		boolean case4 = l.get(3).getRank() == l.get(4).getRank(); // fourth two cards are a pair
 		
 		return (case1 || case2 ||case3 || case4);
+	}
+	
+	public int compareTo(Hand h){
+		if(getRank().ordinal() > (h.getRank().ordinal())){
+			return 1; // This hand has greater ranking than the other hand;
+		}else if (getRank().ordinal() == h.getRank().ordinal()){
+			if(getRank() == HandRanks.ROYALFLUSH){
+				return 0;
+			}else if(getRank() == HandRanks.STRAIGHTFLUSH || getRank() == HandRanks.STRAIGHT || getRank() == HandRanks.FLUSH){
+				return(getHighestCard().compareTo(h.getHighestCard()));
+			}else if(getRank() == HandRanks.FULLHOUSE){
+					return 0;
+			}else{
+				return getHighestCard().compareTo(h.getHighestCard()); // High Card
+			}
+		}else{
+			return -1; // This hand has lesser ranking than the other hand;
+		}
 	}
 }

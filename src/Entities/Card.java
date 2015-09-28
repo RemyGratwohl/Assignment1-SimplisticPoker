@@ -20,6 +20,16 @@ public class Card {
     	return suit;
     }
     
+    public int compareTo(Card c){
+    	if(getRank().ordinal() < c.getRank().ordinal()){
+    		return 1; // This card has a higher rank
+    	}else if (getRank().ordinal() == c.getRank().ordinal()){
+    		return 0;
+    	}else{
+    		return -1;
+    	}
+    }
+    
     public @Override String toString(){
     	return String.format("%s of %s", rank, suit);
     }

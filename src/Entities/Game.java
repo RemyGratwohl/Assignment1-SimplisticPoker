@@ -12,6 +12,9 @@ public class Game {
 
 	private List<String> playerIDs = new ArrayList<String>();
 	private List<String> cardNameBank = new ArrayList<String>();
+	private List<Hand> hands = new ArrayList<Hand>();
+	
+	private int numPlayers;
 	
 	// Parses an input string and creates a new hand from it. 
 	public Hand createHand(String input){
@@ -67,9 +70,24 @@ public class Game {
 	
 	public void start(){
 		while(true){
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Beginning Round, please enter the number of players (2-4)");
+			Scanner scanner = new Scanner(System.in);
+		    numPlayers = 0;
+			String input = "";
 			
+			System.out.println("Beginning Round");
+
+			while(numPlayers < 2 || numPlayers > 4){
+				System.out.println("Enter the number of Players (2-4):");
+				numPlayers = scanner.nextInt();
+			}
+			scanner.nextLine();
+			
+			for (int i = 0; i < numPlayers; i++){
+				System.out.println("Please enter input for hand " + (i+1));
+				System.out.println("Use format playerid RankSuit RankSuit RankSuit RankSuit RankSuit");
+				input = scanner.nextLine();
+				hands.add(createHand(input));
+			}
 		}
 	}
 	
