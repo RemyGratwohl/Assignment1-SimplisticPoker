@@ -6,6 +6,10 @@ StudentNumber: 100891970
 
 Github: https://github.com/RemyGratwohl
 
+##Istructions
+
+The repoistory can be cloned or downloaded from github and then imported into eclipse and ran the usual way. The testsuite is called the default AllTests and can be ran with jUNIT.
+
 ##Tests
 
 testMakeHand()
