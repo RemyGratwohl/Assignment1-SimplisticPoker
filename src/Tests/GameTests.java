@@ -12,7 +12,7 @@ public class GameTests {
 	public void testMakeHand() {
 		String samplestring = "John TenSpades AceHearts SevenDiamonds KingClubs TwoSpades";
 		Game newgame = new Game();
-		Hand newhand = newgame.makeHand(samplestring);
+		Hand newhand = newgame.createHand(samplestring);
 		
 		assertEquals("John",newhand.getPlayerID());
 		
@@ -22,7 +22,7 @@ public class GameTests {
 		assertEquals(Ranks.ACE,newhand.getCards().get(0).getRank());
 		assertEquals(Suits.HEARTS,newhand.getCards().get(0).getSuit());
 		assertEquals(Ranks.KING,newhand.getCards().get(1).getRank());
-		assertEquals(Suits.DIAMONDS,newhand.getCards().get(1).getSuit());
+		assertEquals(Suits.CLUBS,newhand.getCards().get(1).getSuit());
 		assertEquals(Ranks.TEN,newhand.getCards().get(2).getRank());
 		assertEquals(Suits.SPADES,newhand.getCards().get(2).getSuit());
 		assertEquals(Ranks.SEVEN,newhand.getCards().get(3).getRank());

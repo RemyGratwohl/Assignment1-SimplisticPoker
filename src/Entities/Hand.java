@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import Entities.Card;
 import Enums.Ranks;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Hand {
 	private String playerID;
@@ -30,8 +32,20 @@ public class Hand {
 		}
 	}
 	
-	public static int getRank(){
+	public void sortHand(){
+		Collections.sort(cards, new Comparator<Card>() {
+            public int compare( Card c1, Card c2) {
+                return c1.getRank().compareTo(c2.getRank());
+            }
+		});
+	}
+	
+	public int getRank(){
 		return 0;
+	}
+	
+	public List<Card> getHighCards(){
+		return null;
 	}
 	
 
